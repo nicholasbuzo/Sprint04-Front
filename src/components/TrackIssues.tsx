@@ -5,10 +5,10 @@ import { ExclamationCircleIcon, WrenchIcon, CheckCircleIcon } from '@heroicons/r
 import toast from 'react-hot-toast';
 
 const severityColors = {
-  low: 'bg-blue-100 text-blue-800',
-  medium: 'bg-yellow-100 text-yellow-800',
-  high: 'bg-orange-100 text-orange-800',
-  critical: 'bg-red-100 text-red-800',
+  low: 'bg-blue-900/50 text-blue-400 border border-blue-500/30',
+  medium: 'bg-yellow-900/50 text-yellow-400 border border-yellow-500/30',
+  high: 'bg-orange-900/50 text-orange-400 border border-orange-500/30',
+  critical: 'bg-red-900/50 text-red-400 border border-red-500/30',
 };
 
 const statusIcons = {
@@ -45,14 +45,14 @@ export const TrackIssues: React.FC = () => {
   if (loading) {
     return (
       <div className="flex justify-center items-center h-64">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-400"></div>
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="text-center text-red-600 p-4">
+      <div className="text-center text-red-400 p-4">
         <ExclamationCircleIcon className="h-8 w-8 mx-auto mb-2" />
         <p>{error}</p>
       </div>
@@ -68,7 +68,7 @@ export const TrackIssues: React.FC = () => {
           return (
             <div
               key={issue.id}
-              className={`rounded-lg shadow-md p-4 ${severityColors[issue.severity]}`}
+              className={`rounded-lg shadow-lg p-4 ${severityColors[issue.severity]} backdrop-blur-sm`}
             >
               <div className="flex items-center justify-between mb-2">
                 <h3 className="text-lg font-semibold">{issue.location}</h3>

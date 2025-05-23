@@ -5,10 +5,10 @@ import { ExclamationCircleIcon, CheckCircleIcon, ClockIcon } from '@heroicons/re
 import toast from 'react-hot-toast';
 
 const statusColors = {
-  operational: 'bg-green-100 text-green-800',
-  delayed: 'bg-yellow-100 text-yellow-800',
-  maintenance: 'bg-blue-100 text-blue-800',
-  suspended: 'bg-red-100 text-red-800',
+  operational: 'bg-green-900/50 text-green-400 border border-green-500/30',
+  delayed: 'bg-yellow-900/50 text-yellow-400 border border-yellow-500/30',
+  maintenance: 'bg-blue-900/50 text-blue-400 border border-blue-500/30',
+  suspended: 'bg-red-900/50 text-red-400 border border-red-500/30',
 };
 
 const statusIcons = {
@@ -46,14 +46,14 @@ export const TrainStatus: React.FC = () => {
   if (loading) {
     return (
       <div className="flex justify-center items-center h-64">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-400"></div>
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="text-center text-red-600 p-4">
+      <div className="text-center text-red-400 p-4">
         <ExclamationCircleIcon className="h-8 w-8 mx-auto mb-2" />
         <p>{error}</p>
       </div>
@@ -67,7 +67,7 @@ export const TrainStatus: React.FC = () => {
         return (
           <div
             key={train.id}
-            className={`rounded-lg shadow-md p-4 ${statusColors[train.status]}`}
+            className={`rounded-lg shadow-lg p-4 ${statusColors[train.status]} backdrop-blur-sm`}
           >
             <div className="flex items-center justify-between mb-2">
               <h3 className="text-lg font-semibold">Linha {train.line}</h3>
